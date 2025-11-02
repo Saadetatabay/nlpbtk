@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 from sklearn.feature_extraction.text import CountVectorizer
+from collections import Counter
 
 dt = pd.read_csv("/home/satabay/nlpbtk/nlpbtk/IMDB Dataset.csv")
 # print(dt.columns)
@@ -20,3 +21,4 @@ df_bow = pd.DataFrame(vektor_temsili,columns=feature_names)
 print(df_bow.head(15))
 word=x.sum(axis=0).A1 #A1 ile 2D matrisi 1D hale getirdik
 word_freq = dict(zip(feature_names, word))
+print(Counter(word_freq).most_common(5))
