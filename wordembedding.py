@@ -37,3 +37,13 @@ vectors = [word_wv[word] for word in words]
 #50 boyutu 3d ye çevirmek için
 pca = PCA(n_components=3)
 reduced_vektor = pca.fit_transform(vectors)
+
+#görselleştirme
+
+fig = plt.figure(figsize=(10,8))
+ax  = fig.add_subplot(111,projection="3d")
+ax.scatter(reduced_vektor[:,0],reduced_vektor[:,1],reduced_vektor[:,2])
+
+
+
+plt.show()
