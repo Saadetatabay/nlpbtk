@@ -44,6 +44,9 @@ fig = plt.figure(figsize=(10,8))
 ax  = fig.add_subplot(111,projection="3d")
 ax.scatter(reduced_vektor[:,0],reduced_vektor[:,1],reduced_vektor[:,2])
 
-
+#kelimeleri etiketleme
+for i,word in enumerate(words):
+    #xyz kordinatlarını o kelime ile etiketliyoruz
+    ax.text(reduced_vektor[i,0],reduced_vektor[i,1],reduced_vektor[i,2],word)
 
 plt.show()
