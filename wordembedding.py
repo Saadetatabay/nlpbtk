@@ -21,4 +21,19 @@ tokenized_sentence = [simple_preprocess(sentence) for sentence in doc]
 #sg = 0 (CBOW) sg = 1 (Skip-gram)
 word2vec_model = Word2Vec(sentences=tokenized_sentence,vector_size=50,window=5,min_count=1,sg=1)
 fasttext_model = FastText(sentences=tokenized_sentence,vector_size=50,window=5,min_count=1,sg=1)
+#word2vec_model.wv['köpek'] 50 lik array döndü
 
+word_wv = word2vec_model.wv
+
+#dict key:kelime value :indeks
+word_dict = word2vec_model.wv.key_to_index
+
+#kelimeleri aldık
+words = list(word2vec_model.wv.key_to_index)
+#her bir kelimenin 50 boyutlu vektörünü numpy arrayini alır
+vectors = [word_wv[word] for word in words]
+
+
+#50 boyutu 3d ye çevirmek için
+pca = PCA(n_components=3)
+reduced_vektor = pca.fit_transform(vectors)
