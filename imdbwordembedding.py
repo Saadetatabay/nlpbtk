@@ -37,3 +37,7 @@ print(word_vec["her"].size)
 kmeans = KMeans(n_clusters=2)
 kmeans.fit(vektors) #keliemekrin 50lik vektörlerini gönderdik
 kume_etiketleri = kmeans.labels_
+
+#PCA ile 50->2
+pca = PCA(n_components=2)
+reduced_vec = pca.fit_transform(vektors)
