@@ -41,3 +41,17 @@ kume_etiketleri = kmeans.labels_
 #PCA ile 50->2
 pca = PCA(n_components=2)
 reduced_vec = pca.fit_transform(vektors)
+
+#veri görselleştirme
+
+plt.figure()
+#c = kumeetiketleri ile her noktanuın rengini 0 1 olmasına göre renklendirir 
+plt.scatter(reduced_vec[:,0],reduced_vec[:,1],c=kume_etiketleri,cmap="viridis")
+
+#kelimeleri labellama
+for i,word in enumerate(words):
+    plt.text(reduced_vec[i,0],reduced_vec[i,1],word)
+
+
+
+plt.show()
