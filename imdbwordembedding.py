@@ -26,6 +26,14 @@ word_vec = Word2Vec(sentences=tokenized_doc,
                     sg=0).wv
 
 #indeks to key her bir kelimeyi alır  listeye koay indeks ile o keliemye erişriz
-word_vec.index_to_key
+
+words = word_vec.index_to_key[:500]
+vektors = [word_vec[word] for word in words]
+
+print(word_vec.index_to_key[0])
 
 print(word_vec["her"].size)
+
+kmeans = KMeans(n_clusters=2)
+kmeans.fit(vektors) #keliemekrin 50lik vektörlerini gönderdik
+kume_etiketleri = kmeans.labels_
